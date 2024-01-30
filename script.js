@@ -8,57 +8,48 @@ buttonKm.addEventListener("click",
     function() {
         console.log("Invio Click")
 
-        kmtot = +document.getElementById("kmtxt").value;
+        kmtot = Number(document.getElementById("kmtxt").value);
 
         if (typeof kmtot === 'number' && !Number.isNaN(kmtot) && kmtot > 0) {  //!Number.isNaN impedisce che Nan venga accettato come numero
 
             console.log('✅ value is a number');
-            console.log("Km desiderati: ",kmtot)
+            console.log("Km desiderati: ",kmtot);
+            price = kmtot * 0.21;
+            console.log("Prezzo attuale: €", price);
             
         } else {
             
             console.log('⛔️ value is NOT a number');
             alert("Valore inserito non valido, la preghiamo di riprovare!");        
         }       
-        price = kmtot * 0.21;
-        console.log("Prezzo attuale: €", price);
+        
     }
 )
 
+console.log(kmtot) //Provvisorio, i dati non escono da questa function e non capisco come farli uscire
+
 buttonAge.addEventListener("click", 
     function() {
-        console.log("Invio Click")
+        console.log("Invio Click");
 
-        age = +document.getElementById("agetxt").value;
+        age = Number(document.getElementById("agetxt").value);
 
-        if (typeof age === 'number' && !Number.isNaN(age) && age > 0) {
-
+        if (typeof age == 'number' && !Number.isNaN(age) && age > 0) {
             console.log('✅ value is a number');
-            console.log("Età passeggero: ", age);
-        
-            if (age < 18) {
-                console.log('Il passeggero è minorenne, si applica sconto!');
-                price = (price * 0.8).toFixed(2);     //arrotondare il risultato ai decimali
-                console.log("Prezzo finale: €", price);
-                
-          
-                } else if (age >= 65) {
-                    console.log('Il passeggero è Over65, si applica sconto!');
-                    price = (price * 0.6).toFixed(2);
-                    console.log("Prezzo finale: €", price);
 
-              
-                    } else {
-                        console.log('Il passeggero non ha diritto ad alcuno sconto.');
-                        console.log("Prezzo finale: €", price);
-        
-                    }
-            
+            if (age < 18) {
+                console.log('Il passeggero è minorenne, si applica sconto del 20%!');
+                price = (kmtot * 0.21 * 80 / 100).toFixed(2);     //arrotondare il risultato ai decimali
+                console.log("Prezzo finale: €", price);
+
+
+
+
             } else {
-            
                 console.log('⛔️ value is NOT a number');
-                alert("Valore inserito non valido, la preghiamo di ricaricare la pagina e riprovare!");
-            
+                alert("Valore inserito non valido, la preghiamo di riprovare!");   
             }
+        }
     }
+
 )
