@@ -4,18 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biglietto Treno From</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <form action="">
-        <input id="passengername" type="text" placeholder="name surname">
-        <br>
-        <input id="kmtxt" type="number" placeholder="km">
-        <br>
-        <input id="agetxt" type="number" placeholder="age">
-        <br>
-        <button id="generatebutton">Genera</button>
-    </form>
+
+    <div class="container">
+        <h1>Calcola il prezzo del tuo biglietto</h1>
+        
+        <form action="">
+            <div class="alldata">
+                <div class="monodata">
+                    <label for="passengername">Nome Cognome</label>
+                    <input id="passengername" type="text">
+                </div>
+                <div class="monodata">
+                    <label for="kmtxt">Km da percorrere</label>
+                    <input id="kmtxt" type="number">
+                </div>
+                <div class="monodata">
+                    <label for="agetxt">Età</label>
+                    <input id="agetxt" type="number">
+                </div>
+            </div>
+            <div class="buttons">
+                <button id="generatebutton">Genera</button>
+                <button id="clearbutton">Annulla</button>
+            </div>
+        </form>
+
+        <h2>Il tuo biglietto</h2>
+
+        <div class="ticket_container">
+            <h3>Dettagli Passeggero</h3>
+            <div class="full_ticket">
+                <div class="full_ticket_name">
+                    <h4>nome passeggero</h4>
+                    <div id="name_from_input"></div>
+                </div>
+                <div class="full_ticket_data">
+                    <table>
+                        <tr>
+                            <th>Offerta</th>
+                            <th>Carrozza</th>
+                            <th>Codice CP</th>
+                            <th>Costo Biglietto</th>
+                        </tr>
+                        <tr>
+                            <td id="coupon"></td>
+                            <td id="random_cab"></td>
+                            <td id="random_cp"></td>
+                            <td id="ticket_price"></td>
+                        </tr>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 
     <script type="text/javascript" src="script.js">
     </script>
