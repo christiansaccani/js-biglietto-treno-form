@@ -1,55 +1,54 @@
+let passenger;
 let kmtot;
 let price;
 let age;
-const buttonKm = document.querySelector("#kmbutton");
-const buttonAge = document.querySelector("#agebutton");
+const genButton = document.querySelector("#generatebutton");
 
-buttonKm.addEventListener("click", 
+genButton.addEventListener("click", 
     function() {
         console.log("Invio Click")
 
+        passenger = document.getElementById("passengername").value;
         kmtot = Number(document.getElementById("kmtxt").value);
+        age = Number(document.getElementById("agetxt").value);
+
+        console.log("✅ Nome del passeggero: ", passenger);
 
         if (typeof kmtot === 'number' && !Number.isNaN(kmtot) && kmtot > 0) {  //!Number.isNaN impedisce che Nan venga accettato come numero
 
-            console.log('✅ value is a number');
-            console.log("Km desiderati: ",kmtot);
-            price = kmtot * 0.21;
+            console.log('✅ km value is a number');
+            price = (kmtot * 0.21).toFixed(2);
             console.log("Prezzo attuale: €", price);
             
-        } else {
-            
-            console.log('⛔️ value is NOT a number');
-            alert("Valore inserito non valido, la preghiamo di riprovare!");        
-        }       
-        
-    }
-)
+            if (typeof age == 'number' && !Number.isNaN(age) && age > 0) {
+                console.log('✅ age value is a number'); 
 
-console.log(kmtot) //Provvisorio, i dati non escono da questa function e non capisco come farli uscire
+                if (age < 18) {
+                    console.log('Il passeggero è minorenne, si applica sconto del 20%!');
+                    price = (price * 80 / 100).toFixed(2);     //arrotondare il risultato ai decimali
+                    console.log("Prezzo finale: €", price);
 
-buttonAge.addEventListener("click", 
-    function() {
-        console.log("Invio Click");
+                } else if (age >= 65) {
+                    console.log('Il passeggero è Over65, si applica sconto!');
+                    price = (price * 60 / 100).toFixed(2);
+                    console.log("Prezzo finale: €", price);
+              
+                } else {
+                    console.log('Il passeggero non ha diritto ad alcuno sconto.');
+                    console.log("Prezzo finale: €", price);
 
-        age = Number(document.getElementById("agetxt").value);
-
-        if (typeof age == 'number' && !Number.isNaN(age) && age > 0) {
-            console.log('✅ value is a number');
-
-            if (age < 18) {
-                console.log('Il passeggero è minorenne, si applica sconto del 20%!');
-                price = (kmtot * 0.21 * 80 / 100).toFixed(2);     //arrotondare il risultato ai decimali
-                console.log("Prezzo finale: €", price);
-
-
-
+                }
 
             } else {
                 console.log('⛔️ value is NOT a number');
                 alert("Valore inserito non valido, la preghiamo di riprovare!");   
-            }
+            
+            }    
+            
+        } else {
+        
+        console.log('⛔️ value is NOT a number');
+        alert("Valore Km inserito non valido, la preghiamo di riprovare!");        
         }
     }
-
 )
