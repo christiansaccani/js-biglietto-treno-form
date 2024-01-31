@@ -14,8 +14,8 @@ genButton.addEventListener("click",
         console.log("Invio Click")
 
         passenger = document.getElementById("passengername").value;
-        kmtot = Number(document.getElementById("kmtxt").value);
-        age = Number(document.getElementById("agetxt").value);
+        kmtot = Number(document.querySelector("#kmtxt").value);
+        age = Number(document.querySelector("#agetxt").value);
 
         console.log("✅ Nome del passeggero: ", passenger);
 
@@ -44,11 +44,11 @@ genButton.addEventListener("click",
                     price = (price * 80 / 100).toFixed(2);     //arrotondare il risultato ai decimali
                     console.log("Prezzo finale: €", price);
 
-                    document.getElementById('name_from_input').innerHTML = passenger;
-                    document.getElementById('coupon').innerHTML = "-20%";
-                    document.getElementById('random_cab').innerHTML = cab;
-                    document.getElementById('random_cp').innerHTML = cp;
-                    document.getElementById('ticket_price').innerHTML = `€ ${price}`;
+                    document.querySelector('#name_from_input').innerHTML = passenger;
+                    document.querySelector('#coupon').innerHTML = "Under18";
+                    document.querySelector('#random_cab').innerHTML = cab;
+                    document.querySelector('#random_cp').innerHTML = cp;
+                    document.querySelector('#ticket_price').innerHTML = `€ ${price}`;
 
                 } else if (age >= 65) {
                     console.log('Il passeggero è Over65, si applica sconto!');
@@ -56,7 +56,7 @@ genButton.addEventListener("click",
                     console.log("Prezzo finale: €", price);
 
                     document.getElementById('name_from_input').innerHTML = passenger;
-                    document.getElementById('coupon').innerHTML = "-40%";
+                    document.getElementById('coupon').innerHTML = "Over65";
                     document.getElementById('random_cab').innerHTML = cab;
                     document.getElementById('random_cp').innerHTML = cp;
                     document.getElementById('ticket_price').innerHTML = `€ ${price}`;
